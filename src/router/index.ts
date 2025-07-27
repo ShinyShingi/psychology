@@ -8,7 +8,7 @@ const routes: RouteRecordRaw[] = [
     name: 'home',
     component: Home,
     meta: {
-      title: 'Анна Петрова - Психолог',
+      title: 'Раца Лилия - Психолог',
       description: 'Профессиональная психологическая помощь. Индивидуальные и семейные консультации.'
     }
   },
