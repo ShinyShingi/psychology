@@ -183,12 +183,15 @@
         </div>
       </div>
     </footer>
+
+    <BackToTopButton />
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useMainStore } from '@/stores/main'
+import BackToTopButton from '@/components/BackToTopButton.vue'
 
 const store = useMainStore()
 
