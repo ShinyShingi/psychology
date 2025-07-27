@@ -17,7 +17,7 @@
               href="#hero" 
               class="nav-link"
               role="menuitem"
-              @click="закрытьМобильноеМеню"
+              @click="closeMobileMenu"
             >
               Главная
             </a>
@@ -27,7 +27,7 @@
               href="#about" 
               class="nav-link"
               role="menuitem"
-              @click="закрытьМобильноеМеню"
+              @click="closeMobileMenu"
             >
               Обо мне
             </a>
@@ -37,7 +37,7 @@
               href="#services" 
               class="nav-link"
               role="menuitem"
-              @click="закрытьМобильноеМеню"
+              @click="closeMobileMenu"
             >
               Услуги
             </a>
@@ -47,7 +47,7 @@
               href="#methods" 
               class="nav-link"
               role="menuitem"
-              @click="закрытьМобильноеМеню"
+              @click="closeMobileMenu"
             >
               Методы
             </a>
@@ -57,7 +57,7 @@
               href="#faq" 
               class="nav-link"
               role="menuitem"
-              @click="закрытьМобильноеМеню"
+              @click="closeMobileMenu"
             >
               Вопросы
             </a>
@@ -67,7 +67,7 @@
               href="#contact" 
               class="nav-link"
               role="menuitem"
-              @click="закрытьМобильноеМеню"
+              @click="closeMobileMenu"
             >
               Контакты
             </a>
@@ -77,8 +77,8 @@
         <!-- Мобильная кнопка меню -->
         <button 
           class="mobile-menu-btn"
-          @click="переключитьМобильноеМеню"
-          :aria-expanded="мобильноеМеню"
+          @click="toggleMobileMenu"
+          :aria-expanded="mobileMenuOpen"
           aria-controls="mobile-nav"
           aria-label="Переключить меню"
         >
@@ -91,9 +91,9 @@
         <div 
           id="mobile-nav"
           class="mobile-nav"
-          :class="{ 'mobile-nav--open': мобильноеМеню }"
+          :class="{ 'mobile-nav--open': mobileMenuOpen }"
           role="menu"
-          :aria-hidden="!мобильноеМеню"
+          :aria-hidden="!mobileMenuOpen"
         >
           <ul class="mobile-nav-list" role="none">
             <li role="none">
@@ -101,7 +101,7 @@
                 href="#hero" 
                 class="mobile-nav-link"
                 role="menuitem"
-                @click="закрытьМобильноеМеню"
+                @click="closeMobileMenu"
               >
                 Главная
               </a>
@@ -111,7 +111,7 @@
                 href="#about" 
                 class="mobile-nav-link"
                 role="menuitem"
-                @click="закрытьМобильноеМеню"
+                @click="closeMobileMenu"
               >
                 Обо мне
               </a>
@@ -121,7 +121,7 @@
                 href="#services" 
                 class="mobile-nav-link"
                 role="menuitem"
-                @click="закрытьМобильноеМеню"
+                @click="closeMobileMenu"
               >
                 Услуги
               </a>
@@ -131,7 +131,7 @@
                 href="#methods" 
                 class="mobile-nav-link"
                 role="menuitem"
-                @click="закрытьМобильноеМеню"
+                @click="closeMobileMenu"
               >
                 Методы
               </a>
@@ -141,7 +141,7 @@
                 href="#faq" 
                 class="mobile-nav-link"
                 role="menuitem"
-                @click="закрытьМобильноеМеню"
+                @click="closeMobileMenu"
               >
                 Вопросы
               </a>
@@ -151,7 +151,7 @@
                 href="#contact" 
                 class="mobile-nav-link"
                 role="menuitem"
-                @click="закрытьМобильноеМеню"
+                @click="closeMobileMenu"
               >
                 Контакты
               </a>
@@ -174,8 +174,8 @@
         <div class="footer-content">
           <div class="footer-section">
             <h3>Контакты</h3>
-            <p>{{ контакты.телефон }}</p>
-            <p>{{ контакты.email }}</p>
+            <p>{{ contacts.телефон }}</p>
+            <p>{{ contacts.email }}</p>
           </div>
           <div class="footer-section">
             <p>&copy; {{ currentYear }} Психолог. Все права защищены.</p>
@@ -192,12 +192,12 @@ import { useMainStore } from '@/stores/main'
 
 const store = useMainStore()
 
-const мобильноеМеню = computed(() => store.мобильноеМеню)
-const контакты = computed(() => store.контакты)
+const mobileMenuOpen = computed(() => store.мобильноеМеню)
+const contacts = computed(() => store.контакты)
 const currentYear = new Date().getFullYear()
 
-const переключитьМобильноеМеню = store.переключитьМобильноеМеню
-const закрытьМобильноеМеню = store.закрытьМобильноеМеню
+const toggleMobileMenu = store.переключитьМобильноеМеню
+const closeMobileMenu = store.закрытьМобильноеМеню
 </script>
 
 <style scoped>

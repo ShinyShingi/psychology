@@ -1,12 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
-import Главная from '@/views/Главная.vue'
+import Home from '@/views/Home.vue'
 
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
-    name: 'главная',
-    component: Главная,
+    name: 'home',
+    component: Home,
     meta: {
       title: 'Анна Петрова - Психолог',
       description: 'Профессиональная психологическая помощь. Индивидуальные и семейные консультации.'
