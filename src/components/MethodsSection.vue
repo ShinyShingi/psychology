@@ -108,7 +108,7 @@ withDefaults(defineProps<MethodsProps>(), {
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at 20% 30%, rgba(248, 249, 250, 0.4) 0%, transparent 60%);
+  background: radial-gradient(circle at 20% 30%, var(--color-warm-light) 0%, transparent 60%);
   pointer-events: none;
 }
 
@@ -213,7 +213,7 @@ withDefaults(defineProps<MethodsProps>(), {
 }
 
 .principles {
-  background-color: rgba(248, 249, 250, 0.6);
+  background-color: var(--color-warm);
   padding: var(--spacing-xl);
   border-radius: var(--border-radius-lg);
   border: 1px solid rgba(229, 229, 229, 0.3);
