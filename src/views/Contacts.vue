@@ -18,8 +18,8 @@
             <div class="contact-item">
               <h3>Телефон</h3>
               <p>
-                <a :href="`tel:${контакты.телефон.replace(/\s/g, '')}`" class="contact-link">
-                  {{ контакты.телефон }}
+                <a :href="`tel:${contacts.phone.replace(/\s/g, '')}`" class="contact-link">
+                  {{ contacts.phone }}
                 </a>
               </p>
             </div>
@@ -27,15 +27,15 @@
             <div class="contact-item">
               <h3>Email</h3>
               <p>
-                <a :href="`mailto:${контакты.email}`" class="contact-link">
-                  {{ контакты.email }}
+                <a :href="`mailto:${contacts.email}`" class="contact-link">
+                  {{ contacts.email }}
                 </a>
               </p>
             </div>
 
             <div class="contact-item">
               <h3>Адрес</h3>
-              <p>{{ контакты.адрес }}</p>
+              <p>{{ contacts.address }}</p>
             </div>
 
             <div class="contact-item">
@@ -50,19 +50,19 @@
 
           <div class="contact-form-section">
             <h2>Записаться на консультацию</h2>
-            <form class="contact-form" @submit.prevent="отправитьФорму">
+            <form class="contact-form" @submit.prevent="submitForm">
               <div class="form-group">
                 <label for="name" class="form-label">Имя *</label>
                 <input
                   id="name"
-                  v-model="форма.имя"
+                  v-model="form.name"
                   type="text"
                   class="form-input"
                   required
-                  :aria-describedby="ошибки.имя ? 'name-error' : undefined"
+                  :aria-describedby="errors.name ? 'name-error' : undefined"
                 >
-                <div v-if="ошибки.имя" id="name-error" class="form-error" role="alert">
-                  {{ ошибки.имя }}
+                <div v-if="errors.name" id="name-error" class="form-error" role="alert">
+                  {{ errors.name }}
                 </div>
               </div>
 
@@ -70,14 +70,14 @@
                 <label for="phone" class="form-label">Телефон *</label>
                 <input
                   id="phone"
-                  v-model="форма.телефон"
+                  v-model="form.phone"
                   type="tel"
                   class="form-input"
                   required
-                  :aria-describedby="ошибки.телефон ? 'phone-error' : undefined"
+                  :aria-describedby="errors.phone ? 'phone-error' : undefined"
                 >
-                <div v-if="ошибки.телефон" id="phone-error" class="form-error" role="alert">
-                  {{ ошибки.телефон }}
+                <div v-if="errors.phone" id="phone-error" class="form-error" role="alert">
+                  {{ errors.phone }}
                 </div>
               </div>
 
@@ -85,7 +85,7 @@
                 <label for="email" class="form-label">Email</label>
                 <input
                   id="email"
-                  v-model="форма.email"
+                  v-model="form.email"
                   type="email"
                   class="form-input"
                 >
@@ -93,10 +93,10 @@
 
               <div class="form-group">
                 <label for="service" class="form-label">Услуга</label>
-                <select id="service" v-model="форма.услуга" class="form-select">
+                <select id="service" v-model="form.service" class="form-select">
                   <option value="">Выберите услугу</option>
-                  <option v-for="услуга in услуги" :key="услуга.id" :value="услуга.название">
-                    {{ услуга.название }}
+                  <option v-for="service in services" :key="service.id" :value="service.title">
+                    {{ service.title }}
                   </option>
                 </select>
               </div>
@@ -105,20 +105,20 @@
                 <label for="message" class="form-label">Сообщение</label>
                 <textarea
                   id="message"
-                  v-model="форма.сообщение"
+                  v-model="form.message"
                   class="form-textarea"
                   rows="4"
                   placeholder="Опишите вашу ситуацию или вопросы, которые вас беспокоят"
                 ></textarea>
               </div>
 
-              <button type="submit" class="btn form-submit" :disabled="отправляется">
-                {{ отправляется ? 'Отправляется...' : 'Отправить заявку' }}
+              <button type="submit" class="btn form-submit" :disabled="submitting">
+                {{ submitting ? 'Отправляется...' : 'Отправить заявку' }}
               </button>
             </form>
 
-            <div v-if="статусОтправки" class="form-status" :class="статусОтправки.тип" role="alert">
-              {{ статусОтправки.сообщение }}
+            <div v-if="submitStatus" class="form-status" :class="submitStatus.type" role="alert">
+              {{ submitStatus.message }}
             </div>
           </div>
         </div>
@@ -132,77 +132,77 @@ import { ref, reactive, computed } from 'vue'
 import { useMainStore } from '@/stores/main'
 
 const store = useMainStore()
-const контакты = computed(() => store.контакты)
-const услуги = computed(() => store.услуги)
+const contacts = computed(() => store.contacts)
+const services = computed(() => store.services)
 
-const форма = reactive({
-  имя: '',
-  телефон: '',
+const form = reactive({
+  name: '',
+  phone: '',
   email: '',
-  услуга: '',
-  сообщение: ''
+  service: '',
+  message: ''
 })
 
-const ошибки = reactive({
-  имя: '',
-  телефон: ''
+const errors = reactive({
+  name: '',
+  phone: ''
 })
 
-const отправляется = ref(false)
-const статусОтправки = ref<{ тип: 'success' | 'error'; сообщение: string } | null>(null)
+const submitting = ref(false)
+const submitStatus = ref<{ type: 'success' | 'error'; message: string } | null>(null)
 
-const валидироватьФорму = () => {
-  ошибки.имя = ''
-  ошибки.телефон = ''
+const validateForm = () => {
+  errors.name = ''
+  errors.phone = ''
 
-  if (!форма.имя.trim()) {
-    ошибки.имя = 'Пожалуйста, введите ваше имя'
+  if (!form.name.trim()) {
+    errors.name = 'Пожалуйста, введите ваше имя'
     return false
   }
 
-  if (!форма.телефон.trim()) {
-    ошибки.телефон = 'Пожалуйста, введите ваш телефон'
+  if (!form.phone.trim()) {
+    errors.phone = 'Пожалуйста, введите ваш телефон'
     return false
   }
 
-  const телефонРегекс = /^[\+]?[0-9\s\-\(\)]+$/
-  if (!телефонРегекс.test(форма.телефон)) {
-    ошибки.телефон = 'Пожалуйста, введите корректный номер телефона'
+  const phoneRegex = /^[\+]?[0-9\s\-\(\)]+$/
+  if (!phoneRegex.test(form.phone)) {
+    errors.phone = 'Пожалуйста, введите корректный номер телефона'
     return false
   }
 
   return true
 }
 
-const отправитьФорму = async () => {
-  if (!валидироватьФорму()) {
+const submitForm = async () => {
+  if (!validateForm()) {
     return
   }
 
-  отправляется.value = true
-  статусОтправки.value = null
+  submitting.value = true
+  submitStatus.value = null
 
   try {
-    // Здесь должна быть логика отправки формы на сервер
-    // Для демонстрации используем имитацию
+    // Here should be form submission logic to server
+    // For demo purposes using simulation
     await new Promise(resolve => setTimeout(resolve, 1000))
     
-    статусОтправки.value = {
-      тип: 'success',
-      сообщение: 'Ваша заявка успешно отправлена! Я свяжусь с вами в ближайшее время.'
+    submitStatus.value = {
+      type: 'success',
+      message: 'Ваша заявка успешно отправлена! Я свяжусь с вами в ближайшее время.'
     }
 
-    // Очищаем форму после успешной отправки
-    Object.keys(форма).forEach(key => {
-      форма[key as keyof typeof форма] = ''
+    // Clear form after successful submission
+    Object.keys(form).forEach(key => {
+      form[key as keyof typeof form] = ''
     })
   } catch (error) {
-    статусОтправки.value = {
-      тип: 'error',
-      сообщение: 'Произошла ошибка при отправке заявки. Пожалуйста, попробуйте позже или свяжитесь со мной напрямую.'
+    submitStatus.value = {
+      type: 'error',
+      message: 'Произошла ошибка при отправке заявки. Пожалуйста, попробуйте позже или свяжитесь со мной напрямую.'
     }
   } finally {
-    отправляется.value = false
+    submitting.value = false
   }
 }
 </script>

@@ -1,53 +1,53 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
-import type { Контакт, Услуга } from '@/types'
+import type { Contact, Service } from '@/types'
 
 export const useMainStore = defineStore('main', () => {
-  const контакты = ref<Контакт>({
-    телефон: '+7 (900) 000-00-00',
+  const contacts = ref<Contact>({
+    phone: '+7 (900) 000-00-00',
     email: 'info@психолог.com',
-    адрес: 'г. Москва, ул. Примерная, д. 1'
+    address: 'г. Москва, ул. Примерная, д. 1'
   })
 
-  const услуги = ref<Услуга[]>([
+  const services = ref<Service[]>([
     {
       id: '1',
-      название: 'Индивидуальная консультация',
-      описание: 'Персональная работа с психологом для решения личных вопросов',
-      стоимость: '3000 ₽',
-      длительность: '50 минут'
+      title: 'Индивидуальная консультация',
+      description: 'Персональная работа с психологом для решения личных вопросов',
+      price: '3000 ₽',
+      duration: '50 минут'
     },
     {
       id: '2',
-      название: 'Семейная терапия',
-      описание: 'Работа с парами и семьями для улучшения отношений',
-      стоимость: '4000 ₽',
-      длительность: '60 минут'
+      title: 'Семейная терапия',
+      description: 'Работа с парами и семьями для улучшения отношений',
+      price: '4000 ₽',
+      duration: '60 минут'
     },
     {
       id: '3',
-      название: 'Онлайн консультация',
-      описание: 'Психологическая помощь в удобном онлайн формате',
-      стоимость: '2500 ₽',
-      длительность: '50 минут'
+      title: 'Онлайн консультация',
+      description: 'Психологическая помощь в удобном онлайн формате',
+      price: '2500 ₽',
+      duration: '50 минут'
     }
   ])
 
-  const мобильноеМеню = ref(false)
+  const mobileMenu = ref(false)
 
-  const переключитьМобильноеМеню = () => {
-    мобильноеМеню.value = !мобильноеМеню.value
+  const toggleMobileMenu = () => {
+    mobileMenu.value = !mobileMenu.value
   }
 
-  const закрытьМобильноеМеню = () => {
-    мобильноеМеню.value = false
+  const closeMobileMenu = () => {
+    mobileMenu.value = false
   }
 
   return {
-    контакты,
-    услуги,
-    мобильноеМеню: computed(() => мобильноеМеню.value),
-    переключитьМобильноеМеню,
-    закрытьМобильноеМеню
+    contacts,
+    services,
+    mobileMenu: computed(() => mobileMenu.value),
+    toggleMobileMenu,
+    closeMobileMenu
   }
 })

@@ -13,18 +13,18 @@
       <div class="container">
         <div class="services-grid">
           <article 
-            v-for="услуга in услуги" 
-            :key="услуга.id"
+            v-for="service in services" 
+            :key="service.id"
             class="service-card"
           >
-            <h2 class="service-title">{{ услуга.название }}</h2>
-            <p class="service-description">{{ услуга.описание }}</p>
+            <h2 class="service-title">{{ service.title }}</h2>
+            <p class="service-description">{{ service.description }}</p>
             <div class="service-details">
               <div class="service-info">
-                <span class="service-price">{{ услуга.стоимость }}</span>
-                <span class="service-duration">{{ услуга.длительность }}</span>
+                <span class="service-price">{{ service.price }}</span>
+                <span class="service-duration">{{ service.duration }}</span>
               </div>
-              <router-link to="/контакты" class="btn service-btn">
+              <router-link to="/contacts" class="btn service-btn">
                 Записаться
               </router-link>
             </div>
@@ -40,7 +40,7 @@ import { computed } from 'vue'
 import { useMainStore } from '@/stores/main'
 
 const store = useMainStore()
-const услуги = computed(() => store.услуги)
+const services = computed(() => store.services)
 </script>
 
 <style scoped>

@@ -46,7 +46,7 @@
           </a>
         </div>
         
-        <div class="contact-info">
+        <!-- <div class="contact-info">
           <div class="info-grid">
             <div class="info-item">
               <div class="info-icon" aria-hidden="true">⏱️</div>
@@ -76,7 +76,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
         
         <div class="contact-note">
           <p class="note-text">

@@ -12,7 +12,7 @@
 
         <!-- Десктопная навигация -->
         <ul class="nav-list desktop-nav" role="menubar">
-          <li role="none">
+          <!-- <li role="none">
             <a 
               href="#hero" 
               class="nav-link"
@@ -21,7 +21,7 @@
             >
               Главная
             </a>
-          </li>
+          </li> -->
           <li role="none">
             <a 
               href="#about" 
@@ -174,7 +174,7 @@
         <div class="footer-content">
           <div class="footer-section">
             <h3>Контакты</h3>
-            <p>{{ contacts.телефон }}</p>
+            <p>{{ contacts.phone }}</p>
             <p>{{ contacts.email }}</p>
           </div>
           <div class="footer-section">
@@ -195,12 +195,12 @@ import BackToTopButton from '@/components/BackToTopButton.vue'
 
 const store = useMainStore()
 
-const mobileMenuOpen = computed(() => store.мобильноеМеню)
-const contacts = computed(() => store.контакты)
+const mobileMenuOpen = computed(() => store.mobileMenu)
+const contacts = computed(() => store.contacts)
 const currentYear = new Date().getFullYear()
 
-const toggleMobileMenu = store.переключитьМобильноеМеню
-const closeMobileMenu = store.закрытьМобильноеМеню
+const toggleMobileMenu = store.toggleMobileMenu
+const closeMobileMenu = store.closeMobileMenu
 </script>
 
 <style scoped>

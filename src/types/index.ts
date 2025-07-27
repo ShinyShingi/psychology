@@ -1,20 +1,20 @@
-// Основные типы для приложения психолога
-export interface Контакт {
-  телефон: string
+// Main types for psychologist application
+export interface Contact {
+  phone: string
   email: string
-  адрес: string
+  address: string
 }
 
-export interface Услуга {
+export interface Service {
   id: string
-  название: string
-  описание: string
-  стоимость: string
-  длительность: string
+  title: string
+  description: string
+  price: string
+  duration: string
 }
 
-export interface Страница {
-  заголовок: string
-  описание: string
-  ключевыеСлова: string
+export interface Page {
+  title: string
+  description: string
+  keywords: string
 }

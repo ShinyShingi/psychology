@@ -49,18 +49,18 @@
               <div class="contact-info">
                 <p>
                   <strong>Телефон:</strong><br>
-                  {{ контакты.телефон }}
+                  {{ contacts.phone }}
                 </p>
                 <p>
                   <strong>Email:</strong><br>
-                  {{ контакты.email }}
+                  {{ contacts.email }}
                 </p>
                 <p>
                   <strong>Адрес:</strong><br>
-                  {{ контакты.адрес }}
+                  {{ contacts.address }}
                 </p>
               </div>
-              <router-link to="/контакты" class="btn">
+              <router-link to="/contacts" class="btn">
                 Записаться на консультацию
               </router-link>
             </div>
@@ -76,7 +76,7 @@ import { computed } from 'vue'
 import { useMainStore } from '@/stores/main'
 
 const store = useMainStore()
-const контакты = computed(() => store.контакты)
+const contacts = computed(() => store.contacts)
 </script>
 
 <style scoped>
