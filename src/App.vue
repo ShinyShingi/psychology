@@ -212,10 +212,26 @@ const closeMobileMenu = store.closeMobileMenu
 
 .header {
   background-color: var(--color-primary);
-  border-bottom: 1px solid var(--color-accent);
   position: sticky;
   top: 0;
   z-index: 100;
+  position: relative;
+}
+
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--color-taupe-light) 15%, 
+    var(--color-taupe) 50%, 
+    var(--color-taupe-dark) 85%, 
+    transparent 100%
+  );
 }
 
 .nav {
@@ -252,16 +268,34 @@ const closeMobileMenu = store.closeMobileMenu
   padding: var(--spacing-sm) var(--spacing-md);
   border-radius: var(--border-radius-md);
   transition: all var(--transition-fast);
+  position: relative;
 }
 
-.nav-link:hover,
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-taupe-light), var(--color-taupe));
+  border-radius: 1px;
+  transition: width var(--transition-fast);
+}
+
+.nav-link:hover::after {
+  width: 80%;
+}
+
 .nav-link:focus {
-  background-color: var(--color-warm);
+  background: linear-gradient(135deg, var(--color-warm), var(--color-accent-peach));
   color: var(--text-primary);
 }
 
+
 .nav-link--active {
-  background-color: var(--color-warm);
+  background: linear-gradient(135deg, var(--color-accent-soft), var(--color-accent-peach));
   color: var(--text-primary);
 }
 
@@ -318,12 +352,32 @@ const closeMobileMenu = store.closeMobileMenu
   padding: var(--spacing-md);
   font-weight: var(--font-weight-medium);
   border-radius: var(--border-radius-md);
-  transition: background-color var(--transition-fast);
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.mobile-nav-link::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 60%;
+  background: linear-gradient(180deg, var(--color-taupe-light), var(--color-taupe-dark));
+  border-radius: 0 3px 3px 0;
+  transition: width var(--transition-fast);
 }
 
 .mobile-nav-link:hover,
 .mobile-nav-link:focus {
-  background-color: var(--color-warm);
+  background: linear-gradient(135deg, var(--color-warm), var(--color-accent-peach));
+  padding-left: calc(var(--spacing-md) + 8px);
+}
+
+.mobile-nav-link:hover::before,
+.mobile-nav-link:focus::before {
+  width: 4px;
 }
 
 .main {

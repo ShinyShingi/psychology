@@ -9,11 +9,21 @@
   --color-warm: #f0ebe3;
   --color-warm-light: #f7f4f0;
   
+  /* Новые акцентные цвета */
+  --color-accent-soft: #a8dadc;
+  --color-accent-gentle: #457b9d;
+  --color-accent-mint: #b8e6b8;
+  --color-accent-peach: #f4d1ae;
+  --color-taupe: #ACA49F;
+  --color-taupe-light: #BFB8B3;
+  --color-taupe-dark: #968E88;
+  
   /* Цвета текста */
-  --text-primary: #3c3735;
+  --text-primary: #2a251f;
   --text-secondary: #6b635f;
   --text-light: #9b8e87;
   --text-warm: #8a7c75;
+  --text-heading: #1f1b17;
   
   /* Типография */
   --font-family-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -108,6 +118,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-tight);
   margin-bottom: var(--spacing-md);
+  color: var(--text-heading);
 }
 
 h1 {

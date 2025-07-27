@@ -45,39 +45,7 @@
             <div class="method-arrow" aria-hidden="true">→</div>
           </a>
         </div>
-        
-        <!-- <div class="contact-info">
-          <div class="info-grid">
-            <div class="info-item">
-              <div class="info-icon" aria-hidden="true">⏱️</div>
-              <div class="info-content">
-                <h4 class="info-title">Время ответа</h4>
-                <p class="info-text">{{ времяОтвета }}</p>
-              </div>
-            </div>
-            
-            <div class="info-item">
-              <div class="info-icon" aria-hidden="true">🎁</div>
-              <div class="info-content">
-                <h4 class="info-title">Первичная консультация</h4>
-                <p class="info-text">{{ первичнаяКонсультация }}</p>
-              </div>
-            </div>
-            
-            <div class="info-item info-item--schedule">
-              <div class="info-icon" aria-hidden="true">📅</div>
-              <div class="info-content">
-                <h4 class="info-title">График работы</h4>
-                <div class="schedule-details">
-                  <p class="schedule-line">{{ расписание.будни }}</p>
-                  <p class="schedule-line">{{ расписание.суббота }}</p>
-                  <p class="schedule-line schedule-line--weekend">{{ расписание.воскресенье }}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> -->
-        
+      
         <div class="contact-note">
           <p class="note-text">
             <span class="note-icon" aria-hidden="true">💫</span>
@@ -498,7 +466,7 @@ const whatsappLink = `https://wa.me/${props.whatsappNumber}`
   .method-description,
   .info-text,
   .note-text {
-    color: #2c2c2c;
+    color: var(--text-heading);
   }
   
   .contact-method,

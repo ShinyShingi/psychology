@@ -47,23 +47,23 @@ onUnmounted(() => {
   right: var(--spacing-xl);
   width: 3rem;
   height: 3rem;
-  background-color: var(--color-primary);
-  color: var(--text-primary);
+  background: linear-gradient(135deg, var(--color-taupe-light), var(--color-taupe));
+  color: white;
   border: none;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(172, 164, 159, 0.4);
   transition: all var(--transition-fast);
   z-index: 50;
 }
 
 .back-to-top-btn:hover {
-  background-color: var(--color-warm);
+  background: linear-gradient(135deg, var(--color-taupe), var(--color-taupe-dark));
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 20px rgba(172, 164, 159, 0.5);
 }
 
 .back-to-top-btn:focus {

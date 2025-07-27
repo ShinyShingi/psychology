@@ -116,12 +116,12 @@ withDefaults(defineProps<ServicesProps>(), {
     {
       type: 'Онлайн',
       icon: '💻',
-      platforms: 'Zoom, Skype'
+      platforms: 'Teams, WhatsApp, Telegram'
     },
     {
       type: 'Очно',
       icon: '🏢',
-      platforms: 'В офисе'
+      platforms: 'г. Обнинск, Калужская обл.'
     }
   ]
 })
@@ -129,7 +129,7 @@ withDefaults(defineProps<ServicesProps>(), {
 
 <style scoped>
 .services {
-  background: linear-gradient(135deg, #ffffff 0%, #fefefe 50%, #f8f9fa 100%);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 50%, var(--color-tertiary) 100%);
   padding: var(--spacing-3xl) 0;
   position: relative;
 }
@@ -141,7 +141,7 @@ withDefaults(defineProps<ServicesProps>(), {
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at 80% 20%, rgba(245, 245, 245, 0.4) 0%, transparent 60%);
+  background: radial-gradient(circle at 80% 20%, var(--color-warm-light) 0%, transparent 60%);
   pointer-events: none;
 }
 
@@ -162,11 +162,24 @@ withDefaults(defineProps<ServicesProps>(), {
 .services-title {
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: var(--font-weight-light);
-  color: #2c2c2c;
+  color: var(--text-heading);
   margin: 0 0 var(--spacing-3xl) 0;
   letter-spacing: -0.01em;
   line-height: 1.2;
   text-align: center;
+  position: relative;
+}
+
+.services-title::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-taupe), var(--color-taupe-dark));
+  border-radius: 2px;
 }
 
 .services-grid {
@@ -178,7 +191,7 @@ withDefaults(defineProps<ServicesProps>(), {
 .section-subtitle {
   font-size: 1.5rem;
   font-weight: var(--font-weight-medium);
-  color: #2c2c2c;
+  color: var(--text-heading);
   margin: 0 0 var(--spacing-xl) 0;
   text-align: center;
   letter-spacing: 0.01em;
@@ -214,7 +227,7 @@ withDefaults(defineProps<ServicesProps>(), {
 .format-name {
   font-size: 1.25rem;
   font-weight: var(--font-weight-medium);
-  color: #2c2c2c;
+  color: var(--text-heading);
   margin: 0 0 var(--spacing-sm) 0;
   letter-spacing: 0.01em;
 }
@@ -222,7 +235,7 @@ withDefaults(defineProps<ServicesProps>(), {
 .format-divider {
   width: 50px;
   height: 1px;
-  background: linear-gradient(90deg, #d0d0d0, transparent);
+  background: linear-gradient(90deg, var(--color-taupe-light), transparent);
 }
 
 .format-description {
@@ -263,7 +276,7 @@ withDefaults(defineProps<ServicesProps>(), {
 }
 
 .pricing-card {
-  background-color: rgba(248, 249, 250, 0.8);
+  background-color: var(--color-warm);
   padding: var(--spacing-2xl);
   border-radius: var(--border-radius-lg);
   border: 1px solid rgba(229, 229, 229, 0.4);
@@ -280,7 +293,7 @@ withDefaults(defineProps<ServicesProps>(), {
 .pricing-text {
   font-size: 1.5rem;
   font-weight: var(--font-weight-medium);
-  color: #2c2c2c;
+  color: var(--text-heading);
   letter-spacing: 0.02em;
 }
 
@@ -304,11 +317,11 @@ withDefaults(defineProps<ServicesProps>(), {
   align-items: center;
   gap: var(--spacing-md);
   padding: var(--spacing-lg);
-  background-color: rgba(255, 255, 255, 0.7);
-  border-radius: var(--border-radius-md);
-  border: 1px solid rgba(229, 229, 229, 0.3);
-  backdrop-filter: blur(5px);
-  min-width: 200px;
+  background-color: var(--color-warm);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid rgba(229, 229, 229, 0.4);
+  backdrop-filter: blur(10px);
+  width: 100%;
   opacity: 0;
   transform: translateX(-20px);
   animation: fadeInLeft 0.5s ease-out forwards;
@@ -326,7 +339,7 @@ withDefaults(defineProps<ServicesProps>(), {
 .method-type {
   font-size: 1.125rem;
   font-weight: var(--font-weight-medium);
-  color: #2c2c2c;
+  color: var(--text-heading);
   margin: 0 0 var(--spacing-xs) 0;
 }
 
@@ -339,7 +352,7 @@ withDefaults(defineProps<ServicesProps>(), {
 .consultation-note {
   text-align: center;
   padding: var(--spacing-xl);
-  background-color: rgba(248, 249, 250, 0.6);
+  background-color: var(--color-warm);
   border-radius: var(--border-radius-lg);
   border: 1px solid rgba(229, 229, 229, 0.3);
   backdrop-filter: blur(10px);
@@ -362,7 +375,7 @@ withDefaults(defineProps<ServicesProps>(), {
   transform: translateX(-50%);
   width: 100px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(200, 200, 200, 0.5), transparent);
+  background: linear-gradient(90deg, transparent, var(--color-taupe-light), transparent);
 }
 
 /* Адаптивность */
@@ -458,7 +471,7 @@ withDefaults(defineProps<ServicesProps>(), {
   .format-description,
   .pricing-note,
   .note-text {
-    color: #2c2c2c;
+    color: var(--text-heading);
   }
   
   .method-platforms {

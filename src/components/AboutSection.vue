@@ -224,10 +224,22 @@ const openModal = () => {
 .about-title {
   font-size: clamp(2rem, 4vw, 2.5rem);
   font-weight: var(--font-weight-medium);
-  color: #2c2c2c;
+  color: var(--text-heading);
   margin: 0 0 var(--spacing-xl) 0;
   letter-spacing: -0.01em;
   line-height: 1.2;
+  position: relative;
+}
+
+.about-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-taupe-light), var(--color-taupe));
+  border-radius: 2px;
 }
 
 .about-intro {
@@ -286,27 +298,48 @@ const openModal = () => {
 }
 
 .primary-btn {
-  background: var(--color-warm);
+  background: linear-gradient(135deg, var(--color-warm), var(--color-taupe-light));
   color: var(--text-primary);
-  border-color: var(--color-accent);
+  border-color: var(--color-taupe);
 }
 
 .primary-btn:hover {
-  background: #e8e8e8;
+  background: linear-gradient(135deg, var(--color-taupe-light), var(--color-taupe));
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(172, 164, 159, 0.3);
 }
 
 .secondary-btn {
-  background: var(--color-primary);
-  color: var(--text-primary);
-  border-color: var(--color-accent);
+  background-color: var(--color-warm-light);
+  color: var(--text-secondary);
+  border: 1px solid var(--color-taupe-light);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.secondary-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.5s ease;
+}
+
+.secondary-btn:hover::before {
+  left: 100%;
 }
 
 .secondary-btn:hover {
-  background: var(--color-warm);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, var(--color-warm), var(--color-taupe-light));
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(172, 164, 159, 0.3);
+  border-color: var(--color-taupe);
+  color: var(--text-primary);
 }
 
 /* Modal Styles - copied from CertificateGallery */
@@ -515,7 +548,7 @@ const openModal = () => {
   }
   
   .intro-paragraph {
-    color: #2c2c2c;
+    color: var(--text-heading);
   }
   
   .credential-text {

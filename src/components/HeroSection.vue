@@ -142,15 +142,15 @@ const whatsappLink = `https://wa.me/${props.whatsappNumber}`
 
 .hero-work-mode {
   font-size: 1.125rem;
-  color: var(--text-warm);
+  color: var(--text-primary);
   font-weight: var(--font-weight-medium);
   letter-spacing: 0.5px;
   padding: var(--spacing-md) var(--spacing-xl);
-  background-color: var(--color-warm);
+  background: linear-gradient(135deg, var(--color-warm), var(--color-taupe-light));
   border-radius: 50px;
   display: inline-block;
   backdrop-filter: blur(10px);
-  border: 1px solid var(--color-accent);
+  border: 1px solid var(--color-taupe);
 }
 
 .hero-contacts {
@@ -173,7 +173,7 @@ const whatsappLink = `https://wa.me/${props.whatsappNumber}`
   font-size: 1.125rem;
   font-weight: var(--font-weight-medium);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid var(--color-accent);
+  border: 1px solid var(--color-taupe-light);
   backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
@@ -197,10 +197,10 @@ const whatsappLink = `https://wa.me/${props.whatsappNumber}`
 }
 
 .contact-btn:hover {
-  background-color: var(--color-warm);
+  background: linear-gradient(135deg, var(--color-warm), var(--color-taupe-light));
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-  border-color: var(--text-light);
+  box-shadow: 0 8px 25px rgba(172, 164, 159, 0.3);
+  border-color: var(--color-taupe);
 }
 
 .contact-btn:active {

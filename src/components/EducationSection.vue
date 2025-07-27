@@ -169,7 +169,7 @@ withDefaults(defineProps<EducationProps>(), {
 .education-title {
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: var(--font-weight-light);
-  color: #2c2c2c;
+  color: var(--text-heading);
   margin: 0 0 var(--spacing-3xl) 0;
   letter-spacing: -0.01em;
   line-height: 1.2;
@@ -194,7 +194,7 @@ withDefaults(defineProps<EducationProps>(), {
 .block-title {
   font-size: 1.5rem;
   font-weight: var(--font-weight-medium);
-  color: #2c2c2c;
+  color: var(--text-heading);
   margin: 0 0 var(--spacing-xl) 0;
   text-align: center;
   letter-spacing: 0.01em;
@@ -237,7 +237,7 @@ withDefaults(defineProps<EducationProps>(), {
 .item-title {
   font-size: 1.25rem;
   font-weight: var(--font-weight-medium);
-  color: #2c2c2c;
+  color: var(--text-heading);
   margin: 0 0 var(--spacing-xs) 0;
 }
 
@@ -281,7 +281,7 @@ withDefaults(defineProps<EducationProps>(), {
 .training-title {
   font-size: 1.125rem;
   font-weight: var(--font-weight-medium);
-  color: #2c2c2c;
+  color: var(--text-heading);
   margin: 0;
   flex: 1;
 }
@@ -458,7 +458,7 @@ withDefaults(defineProps<EducationProps>(), {
   
   .item-institution,
   .training-description {
-    color: #2c2c2c;
+    color: var(--text-heading);
   }
   
   .certificates-btn {

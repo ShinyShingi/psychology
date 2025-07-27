@@ -342,7 +342,7 @@ const toggleItem = (itemId: string) => {
   }
   
   .answer-text {
-    color: #2c2c2c;
+    color: var(--text-heading);
   }
   
   .question-icon {
